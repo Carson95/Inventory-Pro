@@ -13,7 +13,6 @@ namespace Inventory_Application.Model
     {
         public String errorCode;
         MySqlConnection con;
-        
         String connectionString = "server=" + server + ";uid=" + uid + ";pwd=" + password + ";database=" + database + ";";
 
         /*
@@ -26,9 +25,9 @@ namespace Inventory_Application.Model
                 con = new MySql.Data.MySqlClient.MySqlConnection();
                 con.ConnectionString = connectionString;
                 con.Open();
-            } catch (Exception ex) //add actual exceptions here
+            } catch (MySqlException e)
             {
-
+                errorCode = e.Message;
             }
         }
         
